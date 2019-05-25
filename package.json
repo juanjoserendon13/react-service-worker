@@ -9,7 +9,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build-sw": "node src/sw-build.js",
+    "build": "react-scripts build && npm run clean-cra-sw && npm run build-sw",
+    "clean-cra-sw": "shx rm -f build/precache-manifest.*.js && shx rm -f build/service-worker.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -27,5 +29,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "shx": "^0.3.2"
   }
 }
